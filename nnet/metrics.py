@@ -17,7 +17,6 @@ import torch
 import torch.nn as nn
 
 # Other
-import jiwer
 from scipy.stats import spearmanr
 
 ###############################################################################

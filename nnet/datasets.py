@@ -30,7 +30,6 @@ import os
 import glob
 import random
 from tqdm import tqdm
-import sentencepiece as spm
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
@@ -45,12 +44,6 @@ from nnet.transforms import (
     NormalizeVideo,
     DenormalizeVideo
 )
-
-try:
-    import sounddevice
-except Exception as e:
-    pass
-    #print(e)
 
 ###############################################################################
 # Transforms
