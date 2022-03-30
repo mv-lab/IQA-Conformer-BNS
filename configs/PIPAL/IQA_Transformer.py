@@ -245,7 +245,7 @@ training_dataset = nnet.datasets.PIPAL(
 )
 
 # Training Params
-epochs = 100
+epochs = 30
 batch_size = 16
 accumulated_steps = 1
 mixed_precision = True

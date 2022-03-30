@@ -47,7 +47,7 @@ datasets/PIPAL
     - Train_Label
         - A0001.txt
         - ...
-        
+
     - Train_Ref
         - A0001.bmp
         - ...
@@ -70,4 +70,10 @@ Generate Submission files:
 python main.py -c configs/PIPAL/IQA_Conformer.py --checkpoint swa-equal-21-30 --mode generation
 ```
 output.txt and readme.txt will be stored in callbacks/PIPAL/IQA_Conformer/eval
+
+## Ensemble Models
+
+```
+python ensemble.py
+```
 
