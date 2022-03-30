@@ -142,6 +142,14 @@ class Model(Module):
         # Set Compiled to True
         self.compiled = True
 
+    def set_require_grad(self, networks, require_grad=True):
+
+        if not isinstance(networks, list):
+            networks = [networks]
+
+        for network in networks:
+            network.requires_grad_(require_grad)
+
     def build(self, outputs):
 
         # Map to Outputs
@@ -900,160 +908,3 @@ class Model(Module):
                 for b in range(samples.size(0)):
                     torch.save(samples[b], os.path.join(saving_path, "sample_" + str(self.rank) + "_" + str(ctr) + ".torch"))
                     ctr += 1
-
-    def eval_time(self, dataset_eval, eval_steps=None, beam_size=1, rnnt_max_consec_dec_steps=None, profiler=False):
-
-        def decode():
-
-            # Start Timer
-            start = time.time()
-
-            # Evaluation Loop
-            for step, batch in enumerate(eval_iterator):
-
-                batch = [elt.to(device) for elt in batch]
-
-                # Sequence Prediction
-                with torch.no_grad():
-
-                    if beam_size > 1:
-                        outputs_pred = self.beam_search_decoding(batch[0], batch[2], beam_size)
-                    else:
-                        if rnnt_max_consec_dec_steps is not None:
-                            outputs_pred = self.gready_search_decoding(batch[0], batch[2], rnnt_max_consec_dec_steps)
-                        else:
-                            outputs_pred = self.gready_search_decoding(batch[0], batch[2])
-
-                # Evaluation Steps
-                if eval_steps:
-                    if step + 1 >= eval_steps:
-                        break
-            # Stop Timer
-            return time.time() - start
-
-        # Evaluzation Mode
-        self.eval()
-
-        # tqdm Iterator
-        if self.rank == 0:
-            eval_iterator = tqdm(dataset_eval, total=eval_steps)
-        else: 
-            eval_iterator = dataset_eval
-
-        # Decoding
-        if profiler:
-            with torch.autograd.profiler.profile(profile_memory=True) as prof:
-                with torch.autograd.profiler.record_function("Model Inference"):
-                    timer = decode()
-        else:
-            timer = decode()
-
-        # Profiler Print
-        if profiler:
-            print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
-
-        # Return Eval Time in s
-        return timer
-
-    def eval_time_encoder(self, dataset_eval, eval_steps=None, profiler=False):
-
-        def forward():
-
-            # Start Timer
-            start = time.time()
-
-            for step, batch in enumerate(eval_iterator):
-
-                batch = [elt.to(device) for elt in batch]
-
-                with torch.no_grad():
-                    x, x_len, att = self.encoder.forward(batch[0], batch[2])
-
-                # Evaluation Steps
-                if eval_steps:
-                    if step + 1 >= eval_steps:
-                        break
-
-            # Stop Timer
-            return time.time() - start
-
-        # Evaluzation Mode
-        self.eval()
-
-        # tqdm Iterator
-        if self.rank == 0:
-            eval_iterator = tqdm(dataset_eval, total=eval_steps)
-        else: 
-            eval_iterator = dataset_eval
-
-        # Forward
-        if profiler:
-            with torch.autograd.profiler.profile(profile_memory=True) as prof:
-                with torch.autograd.profiler.record_function("Model Inference"):
-                    timer = forward()
-        else:
-            timer = forward()
-
-        # Profiler Print
-        if profiler:
-            print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
-
-        # Return Eval Time in s
-        return timer
-
-    def eval_time_decoder(self, dataset_eval, eval_steps=None, profiler=False):
-
-        def forward():
-
-            # Start Timer
-            start = time.time()
-
-            for step, batch in enumerate(eval_iterator):
-
-                batch = [elt.to(device) for elt in batch]
-
-                hidden = None
-
-                for i in range(batch[1].size(1)):
-                    with torch.no_grad():
-                        _, hidden = self.decoder.forward(batch[1][:, i:i+1], hidden)
-
-                # Evaluation Steps
-                if eval_steps:
-                    if step + 1 >= eval_steps:
-                        break
-
-            # Stop Timer
-            return time.time() - start
-
-        # Evaluzation Mode
-        self.eval()
-
-        # tqdm Iterator
-        if self.rank == 0:
-            eval_iterator = tqdm(dataset_eval, total=eval_steps)
-        else: 
-            eval_iterator = dataset_eval
-
-        # Forward
-        if profiler:
-            with torch.autograd.profiler.profile(profile_memory=True) as prof:
-                with torch.autograd.profiler.record_function("Model Inference"):
-                    timer = forward()
-        else:
-            timer = forward()
-
-        # Profiler Print
-        if profiler:
-            print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
-
-        # Return Eval Time in s
-        return timer
-
-    def set_require_grad(self, networks, require_grad=True):
-
-        if not isinstance(networks, list):
-            networks = [networks]
-
-        for network in networks:
-            network.requires_grad_(require_grad)
