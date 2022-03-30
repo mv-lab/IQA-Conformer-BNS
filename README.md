@@ -17,6 +17,7 @@ pip install -r requirements.txt
 ## Dataset
 
 The PIPAL dataset should be downloded and extracted in the datasets/PIPAL folder:
+```
 PIPAL:
     - Distortion1
         - A0001_00_00.bmp
@@ -42,6 +43,7 @@ PIPAL:
     - Train_Ref
         - A0001.bmp
         - ...
+```
 
 ## Train IQA Conformer Model
 
