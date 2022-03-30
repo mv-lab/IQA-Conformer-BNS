@@ -468,10 +468,6 @@ class Model(Module):
         # Model Step
         self.model_step = checkpoint["model_step"]
 
-        # Load EMA Model State Dict
-        if checkpoint["ema_model_state_dict"] is not None and self.rank == 0:
-            self.ema_model.load_state_dict(checkpoint["ema_model_state_dict"])
-
         # Print Model state
         if self.rank == 0:
             print("Model loaded at step {}".format(self.model_step))

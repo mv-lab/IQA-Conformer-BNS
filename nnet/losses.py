@@ -531,66 +531,6 @@ class PerceptualLoss(nn.Module):
 
         pass
 
-class BinaryCrossEntropyRCNN(nn.BCELoss):
-
-    def __init__(self):
-        super(BinaryCrossEntropyRCNN, self).__init__(weight=None, size_average=None, reduce=None, reduction="none")
-
-    def forward(self, targets, outputs):
-
-        # Unpack Outputs
-        y_pred = outputs
-
-        # Unpack Targets
-        y, mask = targets
-
-        # Compute Loss
-        loss = super(BinaryCrossEntropyRCNN, self).forward(
-            input=y_pred,
-            target=y
-        )
-
-        # Apply Mask
-        loss *= mask
-
-        # Number Valid Boxes
-        N = mask.count_nonzero()
-
-        # Reduction
-        loss = loss.sum() / N
-
-        return loss
-
-class SmoothL1RCNN(nn.SmoothL1Loss):
-
-    def __init__(self):
-        super(SmoothL1RCNN, self).__init__(reduction='none', beta=1.0)
-
-    def forward(self, targets, outputs):
-
-        # Unpack Outputs
-        y_pred = outputs
-
-        # Unpack Targets
-        y, mask = targets
-
-        # Compute Loss
-        loss = super(SmoothL1RCNN, self).forward(
-            input=y_pred,
-            target=y
-        )
-
-        # Apply Mask
-        loss *= mask
-
-        # Number Valid Boxes
-        N = mask.count_nonzero()
-
-        # Reduction
-        loss = loss.sum() / N
-
-        return loss
-
 class PearsonLoss(nn.Module):
 
     """Pearson Linear Correlation Coefficient Loss"""
@@ -616,46 +556,6 @@ class PearsonLoss(nn.Module):
 
         # loss ∈ [0:1]
         loss = 1 - loss.square()
-
-        return loss
-
-
-class LossInterCTC(nn.Module):
-
-    def __init__(self, interctc_lambda):
-        super(LossInterCTC, self).__init__()
-
-        # CTC Loss
-        self.loss = nn.CTCLoss(blank=0, reduction="none", zero_infinity=False)
-
-        # InterCTC Lambda
-        self.interctc_lambda = interctc_lambda
-
-    def forward(self, batch, pred):
-
-        # Unpack Batch
-        x, y, x_len, y_len = batch
-
-        # Unpack Predictions
-        outputs_pred, f_len, _, interctc_probs = pred
-
-        # Compute CTC Loss
-        loss_ctc = self.loss(
-             log_probs=torch.nn.functional.log_softmax(outputs_pred, dim=-1).transpose(0, 1),
-             targets=y,
-             input_lengths=f_len,
-             target_lengths=y_len)
-
-        # Compute Inter Loss
-        loss_inter = sum(self.loss(
-             log_probs=interctc_prob.log().transpose(0, 1),
-             targets=y,
-             input_lengths=f_len,
-             target_lengths=y_len) for interctc_prob in interctc_probs) / len(interctc_probs)
-
-        # Compute total Loss
-        loss = (1 - self.interctc_lambda) * loss_ctc + self.interctc_lambda * loss_inter
-        loss = loss.mean()
 
         return loss
 

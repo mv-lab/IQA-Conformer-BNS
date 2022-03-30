@@ -14,8 +14,6 @@
 
 # Modules
 from .models import *
-from .models_rl import *
-from .models_zoo import *
 from .networks import *
 from .blocks import *
 from .modules import *
@@ -45,4 +43,3 @@ from .module import Module
 
 # Branches
 from . import datasets
-from . import envs

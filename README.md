@@ -11,7 +11,7 @@ source env/bin/activate
 Set up environment
 ```
 pip install --upgrade pip
-pip install -r requirements/requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Dataset
