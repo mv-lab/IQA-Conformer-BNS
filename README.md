@@ -111,9 +111,13 @@ output.txt and readme.txt will be stored in callbacks/PIPAL/IQA_Transformer/eval
 
 | Model        			| val SRCC     	| val PLCC  | test SRCC | test PLCC |
 | :-------------------:	|:--------:	|:-----:|:----------:|:------:|
-| IQT-C | 0.876 		| 0.865  | 0.790   | 0.799 |
-| IQT-C (ours)| 0.7650		| 0.7897 | 0.7510  | 0.7571 |
+| IQT [1] | 0.876 		| 0.865  | 0.790   | 0.799 |
+| IQT (ours)| 0.7650		| 0.7897 | 0.7510  | 0.7571 |
 | IQA Conformer| 0.7878 		| 0.8035 | 0.7659  | 0.7747 |
+
+## References
+[1] [Manri Cheon, Sung-Jun Yoon, Byungyeon Kang, and Junwoo Lee.	Perceptual Image Quality Assessment with Transformers.](https://openaccess.thecvf.com/content/CVPR2021W/NTIRE/papers/Cheon_Perceptual_Image_Quality_Assessment_With_Transformers_CVPRW_2021_paper.pdf)
+<br><br>
 
 ## Author
 * Maxime Burchi [@burchim](https://github.com/burchim)
