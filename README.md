@@ -1,6 +1,13 @@
-# NTIRE 2022 Perceptual Image Quality Assessment Challenge Track 1 Full-Reference: IQA Conformer Network
+# [CVPR NTIRE 2022] Conformer and Blind Noisy Students for Improved Image Quality Assessment.
 
-## Installation
+Our approaches achieved top results on the [NTIRE 2022 Perceptual Image Quality Assessment Challenge](https://data.vision.ee.ethz.ch/cvl/ntire22/): our full-reference model was ranked 4th, and our no-reference was ranked 3rd among 70 participants.
+
+
+-------
+
+## NTIRE 2022 Perceptual Image Quality Assessment Challenge Track 1 Full-Reference: IQA Conformer Network
+
+### Installation
 
 Create virtual env (optional)
 ```
@@ -14,7 +21,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-## Dataset
+### Dataset
 
 The [PIPAL dataset](https://www.jasongt.com/projectpages/pipal.html) should be downloded and extracted in the datasets/PIPAL folder:
 ```
@@ -53,7 +60,7 @@ datasets/PIPAL
         - ...
 ```
 
-## Pretrained Models and Submissions
+### Pretrained Models and Submissions
 
 The repository contains two pretrained model checkpoints (IQA Conformer and IQA Transformer).
 Both architectures were trained on the PIPAL training sets for 30 epochs (43479 gradient steps) and averaged via Stochastic Weight Averaging (SWA).
@@ -61,7 +68,7 @@ Both architectures were trained on the PIPAL training sets for 30 epochs (43479 
 Model checkpoints are saved in callbacks/PIPAL/IQA_Conformer and callbacks/PIPAL/IQA_Transformer.
 The submissions are stored in eval subfolders.
 
-## Global Method Description
+### Global Method Description
 
 IQA Transformer is a reimplementation of IQT-C "Perceptual Image Quality Assessment with Transformers" by Cheon et al.
 
@@ -89,7 +96,7 @@ python main.py -c configs/PIPAL/IQA_Conformer.py --checkpoint swa-equal-21-30 --
 ```
 output.txt and readme.txt will be stored in callbacks/PIPAL/IQA_Conformer/eval
 
-## Train IQA Transformer Model
+### Train IQA Transformer Model
 
 Start training:
 ```
@@ -107,7 +114,7 @@ python main.py -c configs/PIPAL/IQA_Transformer.py --checkpoint swa-equal-21-30 
 ```
 output.txt and readme.txt will be stored in callbacks/PIPAL/IQA_Transformer/eval
 
-## PIPAL Performance: Pearson linear correlation coefficient (PLCC) and Spearman rank order correlation coefficient (SRCC)
+### PIPAL Performance: Pearson linear correlation coefficient (PLCC) and Spearman rank order correlation coefficient (SRCC)
 
 | Model        			| val SRCC     	| val PLCC  | test SRCC | test PLCC |
 | :-------------------:	|:--------:	|:-----:|:----------:|:------:|
@@ -119,7 +126,9 @@ output.txt and readme.txt will be stored in callbacks/PIPAL/IQA_Transformer/eval
 [1] [Manri Cheon, Sung-Jun Yoon, Byungyeon Kang, and Junwoo Lee.	Perceptual Image Quality Assessment with Transformers.](https://openaccess.thecvf.com/content/CVPR2021W/NTIRE/papers/Cheon_Perceptual_Image_Quality_Assessment_With_Transformers_CVPRW_2021_paper.pdf)
 <br><br>
 
-## Author
-* Maxime Burchi [@burchim](https://github.com/burchim)
-* Contact: [maxime.burchi@gmail.com](mailto:maxime.burchi@gmail.com)
+-------
+
+# Contacts
+* Maxime Burchi [@burchim](https://github.com/burchim) [maxime.burchi@gmail.com](mailto:maxime.burchi@gmail.com)
+* Marcos Conde  [@mv-lab](https://github.com/mv-lab) [marcos.conde-osorio@uni-wuerzburg.de](mailto:marcos.conde-osorio@uni-wuerzburg.de)
 
