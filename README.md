@@ -1,7 +1,20 @@
 # [CVPR NTIRE 2022] Conformer and Blind Noisy Students for Improved Image Quality Assessment.
 
-Our approaches achieved top results on the [NTIRE 2022 Perceptual Image Quality Assessment Challenge](https://data.vision.ee.ethz.ch/cvl/ntire22/): our full-reference model was ranked 4th, and our no-reference was ranked 3rd among 70 participants.
+Our approaches achieved top results on the [NTIRE 2022 Perceptual Image Quality Assessment Challenge](https://data.vision.ee.ethz.ch/cvl/ntire22/): our full-reference model was ranked **4th**, and our no-reference was ranked **3rd** among 70 participants.
 
+> Generative models for image restoration, enhancement, and generation have significantly improved the quality of the generated images. Surprisingly, these models produce more pleasant images to the human eye than other methods, yet, they may get a lower perceptual quality score using traditional perceptual quality metrics such as PSNR or SSIM. Therefore, it is necessary to develop a quantitative metric to reflect the performance of new algorithms, which should be well-aligned with the person's mean opinion score (MOS). Learning-based approaches for perceptual image quality assessment (IQA) usually require both the distorted and reference image for measuring the perceptual quality accurately. However, commonly only the distorted or generated image is available. In this work, we explore the performance of transformer-based full-reference IQA models. We also propose a method for IQA based on semi-supervised knowledge distillation from full-reference teacher models into blind student models using noisy pseudo-labeled data. Our approaches achieved competitive results on the NTIRE 2022 Perceptual Image Quality Assessment Challenge: our full-reference model was ranked 4th, and our blind noisy student was ranked 3rd among 70 participants, each in their respective track. 
+
+If you use ideas/results from this paper or code from this repo, don't forget to cite it :)
+
+```
+
+@inproceedings{conde2022ntire,
+title={Conformer and Blind Noisy Students for Improved Image Quality Assessment}, 
+author = {Conde, Marcos V. and Burchi, Maxime and Timofte, Radu},
+booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+year={2022}
+}
+```
 
 -------
 
@@ -123,12 +136,17 @@ output.txt and readme.txt will be stored in callbacks/PIPAL/IQA_Transformer/eval
 | IQA Conformer| 0.7878 		| 0.8035 | 0.7659  | 0.7747 |
 
 ## References
-[1] [Manri Cheon, Sung-Jun Yoon, Byungyeon Kang, and Junwoo Lee.	Perceptual Image Quality Assessment with Transformers.](https://openaccess.thecvf.com/content/CVPR2021W/NTIRE/papers/Cheon_Perceptual_Image_Quality_Assessment_With_Transformers_CVPRW_2021_paper.pdf)
-<br><br>
+[1] [Perceptual Image Quality Assessment with Transformers](https://openaccess.thecvf.com/content/CVPR2021W/NTIRE/papers/Cheon_Perceptual_Image_Quality_Assessment_With_Transformers_CVPRW_2021_paper.pdf) by Manri Cheon, Sung-Jun Yoon, Byungyeon Kang, and Junwoo Lee.
+<br>
+
+[2] [NTIRE 2021 Challenge on Perceptual Image Quality Assessment](https://openaccess.thecvf.com/content/CVPR2021W/NTIRE/papers/Gu_NTIRE_2021_Challenge_on_Perceptual_Image_Quality_Assessment_CVPRW_2021_paper.pdf) by Jinjin Gu, Haoming Cai, Chao Dong, Jimmy S. Ren, Yu Qiao, Shuhang Gu, Radu Timofte et al.
+<br>
+
+[3] [PIPAL: a Large-Scale Image Quality Assessment Dataset for Perceptual image Restoration](https://www.jasongt.com/projectpages/pipal.html) by Jinjin Gu, Haoming Cai, Haoyu Chen, Xiaoxing Ye, Jimmy Ren, Chao Dong.
 
 -------
 
 # Contacts
-* Maxime Burchi [@burchim](https://github.com/burchim) [maxime.burchi@gmail.com](mailto:maxime.burchi@gmail.com)
-* Marcos Conde  [@mv-lab](https://github.com/mv-lab) [marcos.conde-osorio@uni-wuerzburg.de](mailto:marcos.conde-osorio@uni-wuerzburg.de)
+* Maxime Burchi [@burchim](https://github.com/burchim) | [maxime.burchi@gmail.com](mailto:maxime.burchi@gmail.com)
+* Marcos Conde  [@mv-lab](https://github.com/mv-lab) | [marcos.conde-osorio@uni-wuerzburg.de](mailto:marcos.conde-osorio@uni-wuerzburg.de)
 
