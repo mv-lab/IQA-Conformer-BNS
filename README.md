@@ -2,6 +2,8 @@
 
 Our approaches achieved top results on the [NTIRE 2022 Perceptual Image Quality Assessment Challenge](https://data.vision.ee.ethz.ch/cvl/ntire22/): our full-reference model was ranked **4th**, and our no-reference was ranked **3rd** among 70 participants.
 
+[Read our paper here](https://arxiv.org/pdf/2204.12819.pdf)
+
 > Generative models for image restoration, enhancement, and generation have significantly improved the quality of the generated images. Surprisingly, these models produce more pleasant images to the human eye than other methods, yet, they may get a lower perceptual quality score using traditional perceptual quality metrics such as PSNR or SSIM. Therefore, it is necessary to develop a quantitative metric to reflect the performance of new algorithms, which should be well-aligned with the person's mean opinion score (MOS). Learning-based approaches for perceptual image quality assessment (IQA) usually require both the distorted and reference image for measuring the perceptual quality accurately. However, commonly only the distorted or generated image is available. In this work, we explore the performance of transformer-based full-reference IQA models. We also propose a method for IQA based on semi-supervised knowledge distillation from full-reference teacher models into blind student models using noisy pseudo-labeled data. Our approaches achieved competitive results on the NTIRE 2022 Perceptual Image Quality Assessment Challenge: our full-reference model was ranked 4th, and our blind noisy student was ranked 3rd among 70 participants, each in their respective track. 
 
 If you use ideas/results from this paper or code from this repo, don't forget to cite it :)
@@ -127,13 +129,23 @@ python main.py -c configs/PIPAL/IQA_Transformer.py --checkpoint swa-equal-21-30 
 ```
 output.txt and readme.txt will be stored in callbacks/PIPAL/IQA_Transformer/eval
 
-### PIPAL Performance: Pearson linear correlation coefficient (PLCC) and Spearman rank order correlation coefficient (SRCC)
+### NTIRE 2022 IQA Challenge - PIPAL Full-Reference Performance: 
 
-| Model        			| val SRCC     	| val PLCC  | test SRCC | test PLCC |
-| :-------------------:	|:--------:	|:-----:|:----------:|:------:|
-| IQT [1] | 0.876 		| 0.865  | 0.790   | 0.799 |
-| IQT (ours)| 0.7650		| 0.7897 | 0.7510  | 0.7571 |
-| IQA Conformer| 0.7878 		| 0.8035 | 0.7659  | 0.7747 |
+| Team       			|Main Score | PLCC | SRCC |
+| :-------------------:	|:--------:	|:-----:|:----------:|
+| THU1919Group  		|  1.651  | 0.828   | 0.822 |
+| Netease OPDAI         |  1.642  | 0.827   | 0.815 |
+| KS                    |  1.640  | 0.823   | 0.817 |
+| Ours                  |  1.541  | 0.775   | 0.766 |
+| Yahaha!               |  1.538  | 0.772   | 0.765 |
+| debut kele            |  1.501  | 0.763   | 0.737 |
+| Pico Zen              |  1.450  | 0.738   | 0.713 |
+| Team Horizon          |  1.403  | 0.703   | 0.701 |
+
+Pearson linear correlation coefficient (PLCC) and Spearman rank order correlation coefficient (SRCC)
+
+Main Score is the sum of PLCC and SRCC, the higher the better. Teams ordered by rank int he challenge.
+
 
 ## References
 [1] [Perceptual Image Quality Assessment with Transformers](https://openaccess.thecvf.com/content/CVPR2021W/NTIRE/papers/Cheon_Perceptual_Image_Quality_Assessment_With_Transformers_CVPRW_2021_paper.pdf) by Manri Cheon, Sung-Jun Yoon, Byungyeon Kang, and Junwoo Lee.
@@ -148,5 +160,5 @@ output.txt and readme.txt will be stored in callbacks/PIPAL/IQA_Transformer/eval
 
 # Contacts
 * Maxime Burchi [@burchim](https://github.com/burchim) | [maxime.burchi@gmail.com](mailto:maxime.burchi@gmail.com)
-* Marcos Conde  [@mv-lab](https://github.com/mv-lab) | [marcos.conde-osorio@uni-wuerzburg.de](mailto:marcos.conde-osorio@uni-wuerzburg.de)
+* Marcos Conde  [@mv-lab](https://github.com/mv-lab)   | [marcos.conde-osorio@uni-wuerzburg.de](mailto:marcos.conde-osorio@uni-wuerzburg.de)
 
