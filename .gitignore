@@ -4,6 +4,5 @@ __pycache__
 .DS_Store
 env/*
 datasets/*
-callbacks/*
 .ipynb_checkpoints
 pretrainedmodels
