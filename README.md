@@ -19,6 +19,8 @@ If you use ideas/results from this paper or code from this repo, don't forget to
 }
 ```
 
+<img src="media/quali-results.png" width="600" alt="" border="0">
+
 -------
 
 ## NTIRE 2022 Perceptual Image Quality Assessment Challenge Track 1 Full-Reference: IQA Conformer Network
@@ -94,6 +96,8 @@ a difference feature map, f_diff = f_ref - f_dist is also used.
 
 Concatenated feature maps are then projected using a point-wise convolution but not flattened to preserve spatial information. We use a single Conformer block for both encoder and decoder. The model hyper-parameters are set as follow: L=1, D=128, H=4, D_feat=512, and D_head=128. The input image size of the backbone model is set to 192 × 192 × 3 which generates feature maps of size 21 x 21.
 
+<img src="media/iqaconformer-1.png" width="500" alt="" border="0">
+
 ## Train IQA Conformer Model
 
 Start training:
@@ -146,6 +150,9 @@ output.txt and readme.txt will be stored in callbacks/PIPAL/IQA_Transformer/eval
 Pearson linear correlation coefficient (PLCC) and Spearman rank order correlation coefficient (SRCC)
 
 Main Score is the sum of PLCC and SRCC, the higher the better. Teams ordered by rank int he challenge.
+
+
+<img src="media/mos-results.png" width="600" alt="" border="0">
 
 
 ## References
