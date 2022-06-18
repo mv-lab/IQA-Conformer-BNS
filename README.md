@@ -2,19 +2,20 @@
 
 Our approaches achieved top results on the [NTIRE 2022 Perceptual Image Quality Assessment Challenge](https://data.vision.ee.ethz.ch/cvl/ntire22/): our full-reference model was ranked **4th**, and our no-reference was ranked **3rd** among 70 participants.
 
-[Read our paper here](https://arxiv.org/pdf/2204.12819.pdf)
+[ArXiv](https://arxiv.org/pdf/2204.12819.pdf) ｜ [CVPR Proceedings](https://openaccess.thecvf.com/content/CVPR2022W/NTIRE/html/Conde_Conformer_and_Blind_Noisy_Students_for_Improved_Image_Quality_Assessment_CVPRW_2022_paper.html) ｜ [Poster](media/NITRE-IQA-POSTER.pdf)
 
 > Generative models for image restoration, enhancement, and generation have significantly improved the quality of the generated images. Surprisingly, these models produce more pleasant images to the human eye than other methods, yet, they may get a lower perceptual quality score using traditional perceptual quality metrics such as PSNR or SSIM. Therefore, it is necessary to develop a quantitative metric to reflect the performance of new algorithms, which should be well-aligned with the person's mean opinion score (MOS). Learning-based approaches for perceptual image quality assessment (IQA) usually require both the distorted and reference image for measuring the perceptual quality accurately. However, commonly only the distorted or generated image is available. In this work, we explore the performance of transformer-based full-reference IQA models. We also propose a method for IQA based on semi-supervised knowledge distillation from full-reference teacher models into blind student models using noisy pseudo-labeled data. Our approaches achieved competitive results on the NTIRE 2022 Perceptual Image Quality Assessment Challenge: our full-reference model was ranked 4th, and our blind noisy student was ranked 3rd among 70 participants, each in their respective track. 
 
 If you use ideas/results from this paper or code from this repo, don't forget to cite it :)
 
 ```
-
-@inproceedings{conde2022ntire,
-title={Conformer and Blind Noisy Students for Improved Image Quality Assessment}, 
-author = {Conde, Marcos V. and Burchi, Maxime and Timofte, Radu},
-booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
-year={2022}
+@InProceedings{Conde_2022_CVPR,
+    author    = {Conde, Marcos V. and Burchi, Maxime and Timofte, Radu},
+    title     = {Conformer and Blind Noisy Students for Improved Image Quality Assessment},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2022},
+    pages     = {940-950}
 }
 ```
 
